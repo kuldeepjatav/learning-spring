@@ -16,6 +16,16 @@ public class Room {
     @Column(name="BED_INFO")
     private String bedInfo;
 
+    public Room() {
+    }
+
+    public Room(long roomId, String roomName, String roomNumber, String bedInfo) {
+        this.roomId = roomId;
+        this.roomName = roomName;
+        this.roomNumber = roomNumber;
+        this.bedInfo = bedInfo;
+    }
+
     public long getRoomId() {
         return roomId;
     }

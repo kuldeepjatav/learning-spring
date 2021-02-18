@@ -7,6 +7,7 @@ import com.kuldeep.lil.learningspring.data.entity.Room;
 import com.kuldeep.lil.learningspring.data.repository.GuestRepository;
 import com.kuldeep.lil.learningspring.data.repository.ReservationRepository;
 import com.kuldeep.lil.learningspring.data.repository.RoomRepository;
+import com.kuldeep.lil.learningspring.data.repository.StaffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
     @Autowired
-    public ReservationService(RoomRepository roomRepository, GuestRepository guestRepository, ReservationRepository reservationRepository) {
+    public ReservationService(RoomRepository roomRepository, GuestRepository guestRepository, ReservationRepository reservationRepository, StaffRepository staffRepository) {
         this.roomRepository = roomRepository;
         this.guestRepository = guestRepository;
         this.reservationRepository = reservationRepository;
@@ -66,20 +67,5 @@ public class ReservationService {
         return roomReservations;
     }
 
-    public List<Guest> getHotelGuests() {
-        Iterable<Guest> guests = this.guestRepository.findAll();
-        List<Guest> guestList = new ArrayList<>();
-        guests.forEach(guest -> {guestList.add(guest);});
-        guestList.sort(new Comparator<Guest>() {
-            @Override
-            public int compare(Guest o1, Guest o2) {
-                if (o1.getLastName() == o2.getLastName()) {
-                    return o1.getFirstName().compareTo(o2.getFirstName());
-                }
-                return o1.getLastName().compareTo(o2.getLastName());
-            }
-        });
-        return guestList;
 
-    }
 }

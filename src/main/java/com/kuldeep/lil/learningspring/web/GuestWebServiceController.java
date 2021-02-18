@@ -1,31 +1,26 @@
 package com.kuldeep.lil.learningspring.web;
 
 import com.kuldeep.lil.learningspring.business.service.GuestService;
-import com.kuldeep.lil.learningspring.business.service.ReservationService;
 import com.kuldeep.lil.learningspring.data.entity.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/guests")
-public class GuestWebController {
+@RestController
+@RequestMapping("/api/guests")
+public class GuestWebServiceController {
     private final GuestService guestService;
 
     @Autowired
-    public GuestWebController(GuestService guestService) {
+    public GuestWebServiceController(GuestService guestService) {
         this.guestService = guestService;
     }
 
     @GetMapping
-    public String getGuests(Model model) {
-        List<Guest> guestsList = this.guestService.getHotelGuests();
-        model.addAttribute("guests", guestsList);
-        return "guests";
+    public List<Guest> getHotelGuests() {
+        return this.guestService.getHotelGuests();
     }
-
 }
