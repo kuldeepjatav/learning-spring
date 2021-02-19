@@ -29,7 +29,8 @@
         <h1>Welcome to the Reservations Page</h1>
     </div>
     <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"
+                                                                aria-hidden="true"></span></span>
         <input type="text" class="form-control" id="datepicker" aria-describedby="basic-addon1"/>
     </div>
 
@@ -42,7 +43,9 @@
         <tr th:each="roomReservation: ${roomReservations}">
             <td th:text="${roomReservation.roomName}">Room Name</td>
             <td th:text="${roomReservation.roomNumber}">Room Number</td>
-            <td th:text="${roomReservation.lastName}!=null? ${roomReservation.lastName} + ', ' + ${roomReservation.firstName} : 'VACANT'">Full Name</td>
+            <td th:text="${roomReservation.lastName}!=null? ${roomReservation.lastName} + ', ' + ${roomReservation.firstName} : 'VACANT'">
+                Full Name
+            </td>
         </tr>
     </table>
 </div>
